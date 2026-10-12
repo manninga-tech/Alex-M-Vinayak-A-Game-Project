@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://c6bpwcv75jjdp"]
 
-[ext_resource type="PackedScene" uid="uid://1g72rhwn65p0" path="res://scene/character_body_2d.tscn" id="1_5kiuu"]
+[ext_resource type="PackedScene" uid="uid://dp07sl4gefcbx" path="res://scene/Player.tscn" id="2_33cqm"]
 [ext_resource type="PackedScene" uid="uid://h1w45ueb2cp5" path="res://scene/level_test.tscn" id="2_dbls1"]
 
 [node name="Game" type="Node2D" unique_id=1655957711]
 
-[node name="CharacterBody2D" parent="." unique_id=336442291 instance=ExtResource("1_5kiuu")]
-position = Vector2(0, -8)
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=522802160]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
 [node name="Level_test" parent="." unique_id=1047081921 instance=ExtResource("2_dbls1")]
+position = Vector2(0, 8)
+
+[node name="CharacterBody2D" parent="." unique_id=336442291 instance=ExtResource("2_33cqm")]
+position = Vector2(0, -19)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=255475352]
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
