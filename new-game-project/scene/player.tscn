@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nq2aw"]
 height = 24.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=336442291]
+[node name="Player" type="CharacterBody2D" unique_id=336442291]
 script = ExtResource("1_hjaqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1028043697]
