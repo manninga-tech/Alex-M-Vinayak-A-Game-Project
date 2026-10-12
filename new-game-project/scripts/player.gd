@@ -55,7 +55,7 @@ func add_gravity(delta):
 
 func run():
 	if is_dashing:
-		return
+		return ## If dashing returns, skipping setting velocity
 	
 	if direction:
 		velocity.x = direction * SPEED
