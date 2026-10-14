@@ -4,10 +4,12 @@ extends CharacterBody2D
 const SPEED = 270.0
 const JUMP_VELOCITY = -400.0
 
+@onready var dash_jump_period: Timer = $DashJumpPeriod
 @onready var dash_duration_timer: Timer = $DashDurationTimer
 @onready var cooldown_dash: Timer = $CooldownDash
 @onready var dash_effect_timer: Timer = $DashEffectTimer
 
+var can_dash_jump = false
 var direction = 0
 var is_dashing = false
 var can_dash = true
@@ -29,6 +31,10 @@ func dash():
 		velocity.x = direction * SPEED * dash_speed
 		velocity.y = 0
 
+func dash_jump():
+	if (Input.is_action_just_pressed("Jump") and can_dash_jump):
+		velocity.y = JUMP_VELOCITY
+		can_dash_jump = false
 
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)
@@ -36,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	get_direction()
 	jump()
 	run()
+	dash_jump()
 
 
 
@@ -45,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func jump():
 		# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and not is_dashing:
 		velocity.y = JUMP_VELOCITY
 
 func add_gravity(delta):
@@ -55,7 +62,7 @@ func add_gravity(delta):
 
 func run():
 	if is_dashing:
-		return ## If dashing returns, skipping setting velocity
+		return ## If dashing true returns, skips setting velocity
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -65,7 +72,15 @@ func run():
 
 func _on_dash_duration_timer_timeout() -> void:
 	is_dashing = false
+	if not is_on_floor():
+		can_dash_jump = true
+	
+	dash_jump_period.start()
 	dash_effect_timer.stop()
 
-func _on_dash_effect_timer_timeout() -> void:
+
+func _on_cooldown_dash_timeout() -> void:
 	can_dash = true
+
+func _on_dash_jump_period_timeout() -> void:
+	can_dash_jump = false
