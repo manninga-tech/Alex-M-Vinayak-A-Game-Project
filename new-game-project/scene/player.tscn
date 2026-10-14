@@ -33,5 +33,4 @@ wait_time = 0.5
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dashtimer_timeout"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
 [connection signal="timeout" from="CooldownDash" to="." method="_on_cooldown_dash_timeout"]
-[connection signal="timeout" from="DashEffectTimer" to="." method="_on_dash_effect_timer_timeout"]
 [connection signal="timeout" from="DashJumpPeriod" to="." method="_on_dash_jump_period_timeout"]

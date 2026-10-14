@@ -78,10 +78,9 @@ func _on_dash_duration_timer_timeout() -> void:
 	dash_jump_period.start()
 	dash_effect_timer.stop()
 
-func _on_dash_effect_timer_timeout() -> void:
+
+func _on_cooldown_dash_timeout() -> void:
 	can_dash = true
-
-
 
 func _on_dash_jump_period_timeout() -> void:
 	can_dash_jump = false
