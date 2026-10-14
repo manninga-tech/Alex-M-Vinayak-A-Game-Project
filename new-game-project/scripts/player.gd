@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 func jump():
 		# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and not is_dashing:
 		velocity.y = JUMP_VELOCITY
 
 func add_gravity(delta):
@@ -72,7 +72,9 @@ func run():
 
 func _on_dash_duration_timer_timeout() -> void:
 	is_dashing = false
-	can_dash_jump = true
+	if not is_on_floor():
+		can_dash_jump = true
+	
 	dash_jump_period.start()
 	dash_effect_timer.stop()
 
