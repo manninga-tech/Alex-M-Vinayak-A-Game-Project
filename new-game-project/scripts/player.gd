@@ -84,3 +84,8 @@ func _on_cooldown_dash_timeout() -> void:
 
 func _on_dash_jump_period_timeout() -> void:
 	can_dash_jump = false
+
+
+func _on_collision_hitbox_body_entered(body: Node2D) -> void:
+	if body.name == "basic_obstacle" or body.is_in_group("obstacle"):
+		print("Player entered obstacle")

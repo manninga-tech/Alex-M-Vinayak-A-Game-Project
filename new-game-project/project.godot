@@ -46,6 +46,11 @@ Jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Obstacles"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
