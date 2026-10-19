@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dyinut40ngu8w" path="res://scripts/player.gd" id="1_hjaqi"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://asset/icon.svg" id="2_fvtld"]
-[ext_resource type="Script" uid="uid://br0id5mfpkpgw" path="res://scene/hurt_box.gd" id="3_fvtld"]
+[ext_resource type="Script" uid="uid://br0id5mfpkpgw" path="res://scripts/hurt_box.gd" id="3_fvtld"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nq2aw"]
 height = 24.0
