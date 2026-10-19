@@ -9,11 +9,19 @@ const JUMP_VELOCITY = -400.0
 @onready var cooldown_dash: Timer = $CooldownDash
 @onready var dash_effect_timer: Timer = $DashEffectTimer
 
+var health = 4
+var max_health = 4
 var can_dash_jump = false
 var direction = 0
 var is_dashing = false
 var can_dash = true
 var dash_speed = 4
+var damage = false :
+	set(value) :   ## Runs when variable changes
+		damage = value ## makes sure damage actually changes
+		if value == true:
+			trigger_damage()
+
 
 func get_direction():
 	if not is_dashing:
@@ -36,6 +44,21 @@ func dash_jump():
 		velocity.y = JUMP_VELOCITY
 		can_dash_jump = false
 
+func trigger_damage():
+	health -= 1
+	if health < 1:
+		trigger_death()
+		health = 0
+		return
+	
+	velocity.y = JUMP_VELOCITY * 0.9
+	
+	print(health)
+
+func trigger_death():
+	print("Player is dead")
+	get_tree().reload_current_scene()
+
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)
 	dash()
@@ -43,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	jump()
 	run()
 	dash_jump()
+
 
 
 
@@ -84,8 +108,3 @@ func _on_cooldown_dash_timeout() -> void:
 
 func _on_dash_jump_period_timeout() -> void:
 	can_dash_jump = false
-
-
-func _on_collision_hitbox_body_entered(body: Node2D) -> void:
-	if body.name == "basic_obstacle" or body.is_in_group("obstacle"):
-		print("Player entered obstacle")
