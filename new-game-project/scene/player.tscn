@@ -20,6 +20,9 @@ texture = ExtResource("2_fvtld")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=416577580]
 shape = SubResource("CapsuleShape2D_nq2aw")
 
+[node name="DamageEffectDuration" type="Timer" parent="." unique_id=458844329]
+wait_time = 0.3
+
 [node name="DashDurationTimer" type="Timer" parent="." unique_id=912522504]
 wait_time = 0.15
 one_shot = true
@@ -42,6 +45,7 @@ script = ExtResource("3_fvtld")
 shape = SubResource("CapsuleShape2D_hjaqi")
 debug_color = Color(0.98363644, 0.081059374, 0.25565434, 0.41960785)
 
+[connection signal="timeout" from="DamageEffectDuration" to="." method="_on_damage_effect_duration_timeout"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dashtimer_timeout"]
 [connection signal="timeout" from="DashDurationTimer" to="." method="_on_dash_duration_timer_timeout"]
 [connection signal="timeout" from="CooldownDash" to="." method="_on_cooldown_dash_timeout"]

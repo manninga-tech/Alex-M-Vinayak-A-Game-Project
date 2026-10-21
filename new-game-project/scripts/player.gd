@@ -8,6 +8,8 @@ const JUMP_VELOCITY = -400.0
 @onready var dash_duration_timer: Timer = $DashDurationTimer
 @onready var cooldown_dash: Timer = $CooldownDash
 @onready var dash_effect_timer: Timer = $DashEffectTimer
+@onready var damage_effect_duration: Timer = $DamageEffectDuration
+
 
 var health = 4
 var max_health = 4
@@ -50,14 +52,17 @@ func trigger_damage():
 		trigger_death()
 		health = 0
 		return
+	damage_effect_duration.start()
 	
 	velocity.y = JUMP_VELOCITY * 0.9
+	velocity.x = direction * 500 * -1
+	
 	
 	print(health)
 
 func trigger_death():
 	print("Player is dead")
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
 
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)
@@ -85,7 +90,7 @@ func add_gravity(delta):
 		velocity += get_gravity() * delta
 
 func run():
-	if is_dashing:
+	if is_dashing or damage == true:
 		return ## If dashing true returns, skips setting velocity
 	
 	if direction:
@@ -108,3 +113,7 @@ func _on_cooldown_dash_timeout() -> void:
 
 func _on_dash_jump_period_timeout() -> void:
 	can_dash_jump = false
+
+
+func _on_damage_effect_duration_timeout() -> void:
+	damage = false
