@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -400.0
 @onready var dash_effect_timer: Timer = $DashEffectTimer
 @onready var damage_effect_duration: Timer = $DamageEffectDuration
 
-
+var gravity_modifier = 1
 var health = 4
 var max_health = 4
 var can_dash_jump = false
@@ -56,7 +56,7 @@ func trigger_damage():
 	
 	velocity.y = JUMP_VELOCITY * 0.9
 	velocity.x = direction * 500 * -1
-	
+	gravity_modifier = 1.5
 	
 	print(health)
 
@@ -87,7 +87,7 @@ func jump():
 func add_gravity(delta):
 	# Add the gravity.
 	if not is_on_floor() and not is_dashing:
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * gravity_modifier
 
 func run():
 	if is_dashing or damage == true:
@@ -117,3 +117,4 @@ func _on_dash_jump_period_timeout() -> void:
 
 func _on_damage_effect_duration_timeout() -> void:
 	damage = false
+	gravity_modifier = 1
