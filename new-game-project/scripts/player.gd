@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+## NEED TO FIX DASH NOT KNOCKING BACK AFTER HITTING OBSTACLE
 
 const SPEED = 270.0
 const JUMP_VELOCITY = -400.0
@@ -22,6 +23,7 @@ var damage = false :
 	set(value) :   ## Runs when variable changes
 		damage = value ## makes sure damage actually changes
 		if value == true:
+			print(damage)
 			trigger_damage()
 
 
