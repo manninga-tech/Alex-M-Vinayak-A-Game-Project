@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-## NEED TO FIX DASH NOT KNOCKING BACK AFTER HITTING OBSTACLE
+
 
 const SPEED = 270.0
 const JUMP_VELOCITY = -400.0
@@ -32,7 +32,7 @@ func get_direction():
 		direction = Input.get_axis("Left", "Right")
 
 func dash():
-	if (Input.is_action_just_pressed("dash") and can_dash and direction != 0):
+	if (Input.is_action_just_pressed("dash") and can_dash and direction != 0 and not damage):
 		is_dashing = true
 		can_dash = false
 		cooldown_dash.start()
@@ -56,7 +56,8 @@ func trigger_damage():
 		return
 	damage_effect_duration.start()
 	
-	velocity.y = JUMP_VELOCITY * 0.9
+	is_dashing = false
+	velocity.y = JUMP_VELOCITY * 1.2
 	velocity.x = direction * 500 * -1
 	gravity_modifier = 1.5
 	
