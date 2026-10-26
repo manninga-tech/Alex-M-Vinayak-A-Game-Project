@@ -12,7 +12,6 @@ const JUMP_VELOCITY = -400.0
 @onready var damage_effect_duration: Timer = $DamageEffectDuration
 
 var gravity_modifier = 1
-var health = 4
 var max_health = 4
 var can_dash_jump = false
 var direction = 0
@@ -49,10 +48,10 @@ func dash_jump():
 		can_dash_jump = false
 
 func trigger_damage():
-	health -= 1
-	if health < 1:
+	Globals.health -= 1
+	if Globals.health < 1:
 		trigger_death()
-		health = 0
+		Globals.health = 0
 		return
 	damage_effect_duration.start()
 	
@@ -61,7 +60,7 @@ func trigger_damage():
 	velocity.x = direction * 500 * -1
 	gravity_modifier = 1.5
 	
-	print(health)
+	print(Globals.health)
 
 func trigger_death():
 	print("Player is dead")
