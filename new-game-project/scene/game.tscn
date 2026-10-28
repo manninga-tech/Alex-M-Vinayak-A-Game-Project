@@ -26,4 +26,3 @@ position = Vector2(44, 42)
 scale = Vector2(3, 3)
 texture = ExtResource("3_33cqm")
 hframes = 2
-frame = 1
