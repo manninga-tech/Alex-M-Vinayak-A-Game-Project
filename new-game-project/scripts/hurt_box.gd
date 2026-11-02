@@ -9,4 +9,9 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
+		print(body)
+		if body.name == "Void":
+			owner.fling_y = 2.7
+		else:
+			owner.fling_y = 1.2
 		owner.damage = true

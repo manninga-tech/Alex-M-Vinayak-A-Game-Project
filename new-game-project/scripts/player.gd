@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -400.0
 @onready var dash_effect_timer: Timer = $DashEffectTimer
 @onready var damage_effect_duration: Timer = $DamageEffectDuration
 
+var fling_y = 1.2
 var gravity_modifier = 1
 var max_health = 4
 var can_dash_jump = false
@@ -56,7 +57,7 @@ func trigger_damage():
 	damage_effect_duration.start()
 	
 	is_dashing = false
-	velocity.y = JUMP_VELOCITY * 1.2
+	velocity.y = JUMP_VELOCITY * fling_y
 	velocity.x = direction * 500 * -1
 	gravity_modifier = 1.5
 	
