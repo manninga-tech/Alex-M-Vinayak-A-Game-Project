@@ -86,3 +86,7 @@ tile_set = SubResource("TileSet_nq2aw")
 [node name="Void" type="TileMapLayer" parent="." unique_id=1144197015]
 tile_map_data = PackedByteArray("AABDAAQAAAAEAAAAAABEAAQAAAAEAAAAAAAIAAMAAAAEAAAAAAAJAAMAAAAEAAAAAAAMAAMAAAAEAAAAAAANAAMAAAAEAAAAAABPAAUAAAAEAAAAAABQAAUAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_hlw05")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=307484246]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1847903555]
