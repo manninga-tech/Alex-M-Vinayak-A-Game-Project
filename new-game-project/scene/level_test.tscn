@@ -6,10 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nyuvpch5j34y" path="res://asset/Floor_Sprite sheet.png" id="2_do7dg"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_etc4l"]
-polygon = PackedVector2Array(-12, -32, 12, -32, 12, 16, -12, 16)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oeq3h"]
-polygon = PackedVector2Array(-8, -22, 10, -20, 10, -14, 8, -6, 12, 0, 12, 16, -10, 16, -10, 0, -6, -10, -8, -16)
+polygon = PackedVector2Array(-13, -16, 13, -33, 13, 16, -13, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeq3h"]
 texture = ExtResource("1_g8vc8")
@@ -19,7 +16,6 @@ texture_region_size = Vector2i(32, 32)
 1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_etc4l")
 3:1/size_in_atlas = Vector2i(1, 2)
 3:1/0 = 0
-3:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_oeq3h")
 
 [sub_resource type="TileSet" id="TileSet_wb2mt"]
 tile_size = Vector2i(32, 32)
@@ -29,8 +25,8 @@ sources/0 = SubResource("TileSetAtlasSource_oeq3h")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_avl3p"]
 polygon = PackedVector2Array(-16, 10, 16, 10, 16, 16, -16, 16)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ikfc4"]
-polygon = PackedVector2Array(-16, -14, 16, -14, 16, 16, -16, 16)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oeq3h"]
+polygon = PackedVector2Array(-16, -12, 16, -12, 16, 16, -16, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_arnj4"]
 polygon = PackedVector2Array(-16, 4, 16, 4, 16, 16, -16, 16)
@@ -42,7 +38,7 @@ texture = ExtResource("1_45imd")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:0/size_in_atlas = Vector2i(2, 2)
 4:0/0 = 0
-4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_ikfc4")
+4:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_oeq3h")
 4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 8:0/size_in_atlas = Vector2i(2, 2)
 8:0/0 = 0
@@ -125,7 +121,8 @@ background_mode = 3
 ambient_light_color = Color(0.6693154, 0.6693154, 0.6693154, 1)
 ambient_light_energy = 2.11
 tonemap_mode = 1
-tonemap_exposure = 1.6
+tonemap_exposure = 1.12
+ssr_fade_in = 0.1098062
 glow_enabled = true
 glow_intensity = 1.14
 glow_bloom = 0.2
@@ -137,7 +134,7 @@ fog_height_density = 9.1881
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1068639309]
 texture_repeat = 2
-scroll_scale = Vector2(0.05, 1)
+scroll_scale = Vector2(0.055, 1)
 repeat_size = Vector2(1120, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=1660198781]
@@ -170,10 +167,10 @@ tile_set = SubResource("TileSet_hlw05")
 environment = SubResource("Environment_nq2aw")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=463652284]
-color = Color(0.58704734, 0.5824675, 0.5687479, 1)
+color = Color(0.51914734, 0.55212516, 0.58925986, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1220608803]
 rotation = -0.1765367
-color = Color(0.76430976, 0.6487208, 0.54317135, 1)
-energy = 0.45
+color = Color(0.6636871, 0.56721175, 0.45842397, 1)
+energy = 0.86
 shadow_enabled = true
