@@ -92,7 +92,7 @@ bin/
 *.dmg
 *.zip
 *.tar.gz
-*.pck
+
 
 # -----------------------------
 # OTHER FILES TO KEEP REPOS CLEAN
